@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akhand Bharat by Ajit Sir | Best Study App in Mokama</title>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <link rel="stylesheet" href="https://cloudflare.com">
+    
+    <style>
+        :root {
+            --primary: #ff5e00;
+            --primary-dark: #d94e00;
+            --secondary: #0b1f3a;
+            --accent: #10b981;
+            --gold: #f59e0b;
+            --light-bg: #f4f7fb;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .top-bar {
+            background: linear-gradient(90deg, #ff5e00, #ff9900);
+            color: white;
+            text-align: center;
+            padding: 8px 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: auto;
+            padding: 14px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 22px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .lang-btn {
+            background: var(--secondary);
+            color: white;
+            border: 2px solid var(--primary);
+            padding: 7px 16px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            transition: 0.3s;
+        }
+
+        .lang-btn:hover {
+            background: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .hero {
+            background: radial-gradient(circle at top right, #1e3a8a, var(--secondary));
+            color: white;
+            padding: 70px 20px 90px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .badge {
+            background: rgba(255, 94, 0, 0.2);
+            color: #ffbe98;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 15px;
+            border: 1px solid var(--primary);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            line-height: 1.2;
+            margin-bottom: 18px;
+            font-weight: 800;
+        }
+
+        .hero h1 span {
+            color: #ff9900;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            color: #cbd5e1;
+            margin-bottom: 28px;
+        }
+
+        .hero-btns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .playstore-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--primary), #ff8800);
+            color: white;
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 14px;
+            font-weight: 700;
+            box-shadow: 0 10px 25px rgba(255, 94, 0, 0.4);
+            transition: 0.3s;
+        }
+
+        .playstore-btn:hover {
+            transform: translateY(-4px);
+        }
+
+        .stats-row {
+            display: flex;
+            gap: 30px;
+            margin-top: 35px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .stat-item h3 {
+            font-size: 1.6rem;
+            color: #ff9900;
+        }
+
+        .stat-item p {
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        .hero-mockup {
+            display: flex;
+            justify-content: center;
+        }
+
+        .phone-frame {
+            width: 285px;
+            height: 550px;
+            background: #090d16;
+            border-radius: 40px;
+            padding: 14px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+            border: 4px solid #334155;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+
+        .phone-screen {
+            background: #f8fafc;
+            height: 100%;
+            border-radius: 28px;
+            padding: 20px 15px;
+            color: var(--text-dark);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .app-header-card {
+            background: linear-gradient(135deg, var(--secondary), #1e3a8a);
+            color: white;
+            padding: 15px;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .mini-course {
+            background: white;
+            padding: 10px 12px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.82rem;
+        }
+
+        .section {
+            max-width: 1200px;
+            margin: auto;
+            padding: 75px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title span {
+            color: var(--primary);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .section-title h2 {
+            font-size: 2.3rem;
+            color: var(--secondary);
+            margin: 8px 0;
+            font-weight: 800;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+            transition: 0.3s;
+            border: 1px solid #e2e8f0;
+            position: relative;
+        }
+
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+        }
+
+        .price-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .course-banner {
+            padding: 25px;
+            color: white;
+            font-size: 2.2rem;
+        }
+
+        .course-body {
+            padding: 25px;
+        }
+
+        .course-body h3 {
+            font-size: 1.3rem;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .course-list {
+            list-style: none;
+            margin: 15px 0;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .course-list li {
+            margin-bottom: 6px;
+        }
+
+        .course-list i {
+            color: var(--accent);
+            margin-right: 8px;
+        }
+
+        .promo-banner {
+            background: linear-gradient(135deg, #ff5e00 0%, #ff9900 100%);
+            border-radius: 24px;
+            padding: 45px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            box-shadow: 0 20px 40px rgba(255, 94, 0, 0.25);
+        }
+
+        .promo-btn {
+            background: var(--secondary);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .promo-btn:hover {
+            background: #000;
+        }
+
+        .educator-section {
+            background: white;
+            padding: 80px 20px;
+        }
+
+        .educator-card {
+            max-width: 1050px;
+            margin: auto;
+            background: linear-gradient(135deg, #f8fafc, #eef2ff);
+            border-radius: 28px;
+            padding: 45px;
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: 40px;
+            align-items: center;
+            border: 2px solid #e2e8f0;
+        }
+
+        .sir-photo-box {
+            width: 220px;
+            height: 240px;
+            border-radius: 22px;
+            background: linear-gradient(135deg, var(--secondary), #1e40af);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border: 5px solid var(--primary);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .sir-photo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .sir-badge {
+            background: var(--primary);
+            color: white;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .feat-box {
+            background: white;
+            padding: 28px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+            transition: 0.3s;
+        }
+
+        .feat-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .feat-box i {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        footer {
+            background: var(--secondary);
+            color: #cbd5e1;
+            padding: 55px 20px 25px;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .social-links a {
+            width: 44px;
+            height: 44px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .hero-container, .educator-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .sir-photo-box {
+                margin: auto;
+            }
+            .nav-links {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 2.1rem;
+            }
+            .stats-row {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar" data-hi="🔥 मोकामा का सबसे भरोसेमंद Study App! अब Maths, Science और GK/GS पढ़ें सबसे कम फीस में!" data-en="🔥 Mokama's Most Trusted Study App! Learn Maths, Science & GK/GS at the Lowest Fee!">
+        🔥 मोकामा का सबसे भरोसेमंद Study App! अब Maths, Science और GK/GS पढ़ें सबसे कम फीस में!
+    </div>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-graduation-cap" style="color: var(--primary);"></i>
+                Akhand <span>Bharat</span>
+            </div>
+
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#home" data-hi="होम" data-en="Home">होम</a></li>
+                    <li><a href="#courses" data-hi="क्लासेस" data-en="Classes">क्लासेस</a></li>
+                    <li><a href="#why-us" data-hi="खासियतें" data-en="Why Us">खासियतें</a></li>
+                    <li><a href="#ajit-sir" data-hi="अजीत सर" data-en="Ajit Sir">अजीत सर</a></li>
+                </ul>
+
+                <button class="lang-btn" onclick="toggleLanguage()" id="langBtn">
+                    <i class="fas fa-language"></i> <span id="langText">English</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div>
+                <span class="badge" data-hi="📍 मोकामा (बिहार) से पूरे भारत की तैयारी" data-en="📍 From Mokama (Bihar) to All India Success">
+                    📍 मोकामा (बिहार) से पूरे भारत की तैयारी
+                </span>
+                
+                <h1 data-hi="अब हर छात्र बनेगा टॉपर <span>Ajit Sir</span> के मार्गदर्शन में!" data-en="Every Student Will Become a Topper Under <span>Ajit Sir's</span> Guidance!">
+                    अब हर छात्र बनेगा टॉपर <span>Ajit Sir</span> के मार्गदर्शन में!
+                </h1>
+
+                <p data-hi="Maths (गणित), Science (विज्ञान) और सभी विषयों की लाइव क्लासेस, आसान ट्रिक्स, PDF नोट्स और टेस्ट सीरीज़ — बिल्कुल नाममात्र (सबसे सस्ती) फीस में।" 
+                   data-en="Live classes for Maths, Science & all subjects, easy tricks, PDF notes, and test series — at the most affordable fee.">
+                   Maths (गणित), Science (विज्ञान) और सभी विषयों की लाइव क्लासेस, आसान ट्रिक्स, PDF नोट्स और टेस्ट सीरीज़ — बिल्कुल नाममात्र (सबसे सस्ती) फीस में।
+                </p>
+
+                <div class="hero-btns">
+                    <a href="https://google.com" target="_blank" class="playstore-btn">
+                        <i class="fab fa-google-play fa-2x"></i>
+                        <div style="text-align: left;">
+                            <small style="display: block; font-size: 0.75rem; font-weight: 400;" data-hi="अभी डाउनलोड करें" data-en="DOWNLOAD ON">अभी डाउनलोड करें</small>
+                            Google Play Store
+                        </div>
+                    </a>
+                </div>
+
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <h3>100%</h3>
+                        <p data-hi="आसान भाषा में पढ़ाई" data-en="Easy Concept Clarity">आसान भाषा में पढ़ाई</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>₹ Lowest</h3>
+                        <p data-hi="सबसे किफायती फीस" data-en="Most Affordable Fee">सबसे किफायती फीस</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>24x7</h3>
+                        <p data-hi="डाउट सपोर्ट & PDF" data-en="Doubt Support & PDF">डाउट सपोर्ट & PDF</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-mockup">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <div class="app-header-card">
+                            <h3 style="font-size: 1.2rem;">Akhand Bharat App</h3>
+                            <small style="color: #ffbe98;">By Ajit Sir • Mokama</small>
+                        </div>
+
+                        <div>
+                            <div class="mini-course">
+                                <i class="fas fa-calculator fa-lg" style="color: #ff5e00;"></i>
+                                <div>
+                                    <strong>Maths Special Class</strong>
+                                    <div style="font-size: 0.72rem; color: gray;">Zero to Hero Concept + Tricks</div>
+                                </div>
+                            </div>
+
+                            <div class="mini-course">
+                                <i class="fas fa-flask fa-lg" style="color: #10b981;"></i>
+                                <div>
+                                    <strong>Science Special Class</strong>
+                                    <div style="font-size: 0.72rem; color: gray;">Physics, Chemistry & Biology</div>
+                                </div>
+                            </div>
+
+                            <div class="mini-course">
+                                <i class="fas fa-globe-asia fa-lg" style="color: #2563eb;"></i>
+                                <div>
+                                    <strong>GK / GS & Bihar Special</strong>
+                                    <div style="font-size: 0.72rem; color: gray;">Daily Quiz + Handwritten Notes</div>
+                                </div>
+                            </div>
+
+                            <div class="mini-course">
+                                <i class="fas fa-file-pdf fa-lg" style="color: #ef4444;"></i>
+                                <div>
+                                    <strong>Free Study Material</strong>
+                                    <div style="font-size: 0.72rem; color: gray;">PDF Notes & Model Papers</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="background: var(--primary); color: white; text-align: center; padding: 10px; border-radius: 12px; font-weight: 700; font-size: 0.88rem;">
+                            Join Batch Now 🚀
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="courses">
+        <div class="section-title">
+            <span data-hi="हमारे प्रमुख बैच" data-en="OUR POPULAR CLASSES">हमारे प्रमुख बैच</span>
+            <h2 data-hi="सभी विषयों की धमाकेदार तैयारी" data-en="Complete Preparation of All Subjects">सभी विषयों की धमाकेदार तैयारी</h2>
+        </div>
+
+        <div class="courses-grid">
+            <div class="course-card">
+                <span class="price-tag" data-hi="सबसे सस्ता बैच" data-en="Super Affordable">सबसे सस्ता बैच</span>
+                <div class="course-banner" style="background: linear-gradient(135deg, #1e3a8a, #3b82f6);">
+                    <i class="fas fa-square-root-alt"></i>
+                </div>
+                <div class="course-body">
+                    <h3 data-hi="Maths स्पेशल क्लास (गणित)" data-en="Maths Special Class">Maths स्पेशल क्लास (गणित)</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);" data-hi="अब गणित से डर खत्म! बेसिक से लेकर एडवांस तक आसान ट्रिक्स के साथ।" data-en="No more fear of Maths! From basic to advanced with super easy tricks.">
+                        अब गणित से डर खत्म! बेसिक से लेकर एडवांस तक आसान ट्रिक्स के साथ।
+                    </p>
+                    <ul class="course-list">
+                        <li><i class="fas fa-check-circle"></i> <span data-hi="लाइव + रिकॉर्डेड क्लास" data-en="Live + Recorded Classes">लाइव + रिकॉर्डेड क्लास</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-hi="चैप्टर-वाइज PDF शीट" data-en="Chapter-wise PDF Sheets">चैप्टर-वाइज PDF शीट</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-hi="शॉर्टकट ट्रिक्स और प्रैक्टिस" data-en="Shortcut Tricks & Practice">शॉर्टकट ट्रिक्स और प्रैक्टिस</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="course-card">
+                <span class="price-tag" data-hi="महा-बचत ऑफर" data-en="Best Value">महा-बचत ऑफर</span>
+                <div class="course-banner" style="background: linear-gradient(135deg, #059669, #10b981);">
+                    <i class="fas fa-atom"></i>
+                </div>
+                <div class="course-body">
+                    <h3 data-hi="Science स्पेशल क्लास (विज्ञान)" data-en="Science Special Class">Science स्पेशल क्लास (विज्ञान)</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);" data-hi="Physics, Chemistry और Biology को समझें प्रैक्टिकल और आसान उदाहरणों से।" data-en="Understand Physics, Chemistry & Biology with practical and easy examples.">
+                        Physics, Chemistry और Biology को समझें प्रैक्टिकल और आसान उदाहरणों से।
+                    </p>
+                    <ul class="course-list">
+                        <li><i class="fas fa-check-circle"></i> <span data-hi="NCERT आधारित संपूर्ण पढ़ाई" data-en="Complete NCERT Based Study">NCERT आधारित संपूर्ण पढ़ाई</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-hi="महत्वपूर्ण ऑब्जेक्टिव प्रश्न" data-en="Important Objective Questions">महत्वपूर्ण ऑब्जेक्टिव प्रश्न</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-hi="साप्ताहिक साइंस टेस्ट" data-en="Weekly Science Test">साप्ताहिक साइंस टेस्ट</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="course-card">
+                <span class="price-tag" data-hi="ऑल-इन-वन" data-en="All-In-One">ऑल-इन-वन</span>
+                <div class="course-banner" style="background: linear-gradient(135deg, #d97706, #f59e0b);">
+                    <i class="fas fa-book-reader"></i>
+                </div>
+                <div class="course-body">
+                    <h3 data-hi="GK / GS & ऑल सब्जेक्ट बैच" data-en="GK / GS & All Subject Batch">GK / GS & ऑल सब्जेक्ट बैच</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);" data-hi="बोर्ड परीक्षा और सभी प्रतियोगी परीक्षाओं के लिए संपूर्ण फाउंडेशन बैच।" data-en="Complete foundation batch for Board Exams & all Competitive Exams.">
+                        बोर्ड परीक्षा और सभी प्रतियोगी परीक्षाओं के लिए संपूर्ण फाउंडेशन बैच।
+                    </p>
+                    <ul class="course-list">
+                        <li><i class="fas fa-check-circle"></i> <span data-hi="हस्तलिखित (Handwritten) नोट्स" data-en="Handwritten Notes">हस्तलिखित (Handwritten) नोट्स</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-hi="पिछले वर्षों के प्रश्न पत्र (PYQ)" data-en="Previous Year Questions (PYQ)">पिछले वर्षों के प्रश्न पत्र (PYQ)</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-hi="अजीत सर का सीधा मार्गदर्शन" data-en="Direct Mentorship by Ajit Sir">अजीत सर का सीधा मार्गदर्शन</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="promo-banner" style="margin-top: 60px;">
+            <div style="max-width: 700px;">
+                <h2 style="font-size: 1.9rem; margin-bottom: 10px;" data-hi="💰 पैसों की कमी अब पढ़ाई में बाधा नहीं बनेगी!" data-en="💰 Lack of Money Will Never Stop Your Education!">
+                    💰 पैसों की कमी अब पढ़ाई में बाधा नहीं बनेगी!
+                </h2>
+                <p style="font-size: 1.05rem; opacity: 0.95;" data-hi="मोकामा और गाँव-देहात के हर गरीब व मेहनती छात्र के लिए Ajit Sir लेकर आए हैं सबसे सस्ती फीस में क्वालिटी एजुकेशन। आज ही ऐप डाउनलोड करें!" 
+                   data-en="For every hardworking student from Mokama and rural areas, Ajit Sir brings quality education at the lowest possible fee. Download the app today!">
+                   मोकामा और गाँव-देहात के हर गरीब व मेहनती छात्र के लिए Ajit Sir लेकर आए हैं सबसे सस्ती फीस में क्वालिटी एजुकेशन। आज ही ऐप डाउनलोड करें!
+                </p>
+            </div>
+            <a href="https://google.com" target="_blank" class="promo-btn" data-hi="ऐप इंस्टॉल करें 📲" data-en="Install App Now 📲">
+                ऐप इंस्टॉल करें 📲
+            </a>
+        </div>
+    </section>
+
+    <section class="educator-section" id="ajit-sir">
+        <div class="educator-card">
+            <div class="sir-photo-box">
+                <img src="ajitsir.jpg" alt="Ajit Sir">
+            </div>
+
+            <div>
+                <span class="sir-badge" data-hi="संस्थापक एवं मुख्य शिक्षक • मोकामा" data-en="Founder & Lead Educator • Mokama">
+                    संस्थापक एवं मुख्य शिक्षक • मोकामा
+                </span>
+                <h2 style="font-size: 2.1rem; color: var(--secondary); margin-bottom: 12px;">Ajit Sir (अजीत सर)</h2>
+                
+                <p style="color: var(--text-dark); font-size: 1.02rem; margin-bottom: 15px;" 
+                   data-hi="“मेरा सपना है कि मोकामा और पूरे बिहार का कोई भी छात्र महंगी कोचिंग की वजह से पढ़ाई से वंचित न रहे। <strong>Akhand Bharat</strong> ऐप के ज़रिए हम हर घर तक सबसे सस्ती और बेहतरीन शिक्षा पहुँचा रहे हैं।”"
+                   data-en="“My dream is that no student in Mokama and across Bihar is deprived of education due to expensive coaching. Through the <strong>Akhand Bharat</strong> app, we are delivering the most affordable and best education to every home.”">
+                   “मेरा सपना है कि मोकामा और पूरे बिहार का कोई भी छात्र महंगी कोचिंग की वजह से पढ़ाई से वंचित न रहे। <strong>Akhand Bharat</strong> ऐप के ज़रिए हम हर घर तक सबसे सस्ती और बेहतरीन शिक्षा पहुँचा रहे हैं।”
+                </p>
+
+                <div style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px;">
+                    <span style="background: white; padding: 8px 15px; border-radius: 10px; font-size: 0.85rem; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                        <i class="fas fa-star" style="color: var(--gold);"></i> Maths & Science Expert
+                    </span>
+                    <span style="background: white; padding: 8px 15px; border-radius: 10px; font-size: 0.85rem; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                        <i class="fas fa-heart" style="color: red;"></i> <span data-hi="एक छात्र द्वारा गुरुजी को समर्पित" data-en="Dedicated to Sir by His Student">एक छात्र द्वारा गुरुजी को समर्पित</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="why-us">
+        <div class="section-title">
+            <span data-hi="ऐप की विशेषताएं" data-en="APP FEATURES">ऐप की विशेषताएं</span>
+            <h2 data-hi="Akhand Bharat ही क्यों चुनें?" data-en="Why Choose Akhand Bharat?">Akhand Bharat ही क्यों चुनें?</h2>
+        </div>
+
+        <div class="features-grid">
+            <div class="feat-box">
+                <i class="fas fa-rupee-sign"></i>
+                <h3 data-hi="बेहद कम फीस" data-en="Super Low Fees">बेहद कम फीस</h3>
+                <p style="font-size: 0.9rem; color: var(--text-muted);" data-hi="हर वर्ग के छात्रों के बजट में फिट होने वाली सबसे सस्ती फीस।" data-en="Most affordable fees fitting every student's budget.">हर वर्ग के छात्रों के बजट में फिट होने वाली सबसे सस्ती फीस।</p>
+            </div>
+
+            <div class="feat-box">
+                <i class="fas fa-video"></i>
+                <h3 data-hi="HD वीडियो क्लासेस" data-en="HD Video Classes">HD वीडियो क्लासेस</h3>
+                <p style="font-size: 0.9rem; color: var(--text-muted);" data-hi="कम डेटा में चलने वाली क्लियर लाइव और रिकॉर्डेड क्लासेस।" data-en="Clear live and recorded classes using low mobile data.">कम डेटा में चलने वाली क्लियर लाइव और रिकॉर्डेड क्लासेस।</p>
+            </div>
+
+            <div class="feat-box">
+                <i class="fas fa-file-alt"></i>
+                <h3 data-hi="फ्री PDF & नोट्स" data-en="Free PDF & Notes">फ्री PDF & नोट्स</h3>
+                <p style="font-size: 0.9rem; color: var(--text-muted);" data-hi="क्लास के तुरंत बाद प्रिंट करने योग्य आसान नोट्स।" data-en="Easy printable notes right after every class.">क्लास के तुरंत बाद प्रिंट करने योग्य आसान नोट्स।</p>
+            </div>
+
+            <div class="feat-box">
+                <i class="fas fa-award"></i>
+                <h3 data-hi="डेली टेस्ट & क्विज़" data-en="Daily Tests & Quiz">डेली टेस्ट & क्विज़</h3>
+                <p style="font-size: 0.9rem; color: var(--text-muted);" data-hi="अपनी तैयारी जांचने के लिए रोज़ाना ऑनलाइन प्रैक्टिस टेस्ट।" data-en="Daily online practice tests to check your preparation.">अपनी तैयारी जांचने के लिए रोज़ाना ऑनलाइन प्रैक्टिस टेस्ट।</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <h2 style="color: white; margin-bottom: 8px;">Akhand Bharat Study App</h2>
+        अजीत सर के मार्गदर्शन में सफलता की नई पहचान • मोकामा (पटना), बिहार</p>
+        <div class="social-links">
+            <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
+            <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://google.com" target="_blank" title="Google Play Store"><i class="fab fa-google-play"></i></a>
+        </div>
+        <div style="max-width: 1100px; margin: 25px auto 0; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.15); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; font-size: 0.9rem;">
+            <span style="opacity: 0.8;">&copy; 2026 Akhand Bharat by Ajit Sir. All Rights Reserved.</span>
+            <span style="background: rgba(255, 94, 0, 0.2); border: 1px solid #ff5e00; padding: 6px 16px; border-radius: 20px; color: #ffbe98; font-weight: 600;">
+                Website Designed & Made with ❤️ by <strong style="color: #ffffff;">Tejas</strong>
+            </span>
+        </div>    <!-- 1. How It Works (3 Easy Steps) -->
+    <section class="section" style="padding-top: 0;">
+        <div class="section-title">
+            <span data-hi="शुरुआत कैसे करें?" data-en="HOW TO START?">शुरुआत कैसे करें?</span>
+            <h2 data-hi="सिर्फ 3 आसान स्टेप्स में पढ़ाई शुरू करें" data-en="Start Learning in Just 3 Easy Steps">सिर्फ 3 आसान स्टेप्स में पढ़ाई शुरू करें</h2>
+        </div>
+
+        <div class="features-grid">
+            <div class="feat-box" style="border-top: 4px solid var(--primary);">
+                <div style="width: 40px; height: 40px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; margin: 0 auto 15px;">1</div>
+                <h3 data-hi="ऐप डाउनलोड करें" data-en="Download the App">ऐप डाउनलोड करें</h3>
+                <p style="font-size: 0.9rem; color: var(--text-muted);" data-hi="Google Play Store से Akhand Bharat ऐप इंस्टॉल करें और अपना मोबाइल नंबर डालकर रजिस्टर करें।" data-en="Install Akhand Bharat app from Google Play Store and register with your mobile number.">Google Play Store से Akhand Bharat ऐप इंस्टॉल करें और अपना मोबाइल नंबर डालकर रजिस्टर करें।</p>
+            </div>
+
+            <div class="feat-box" style="border-top: 4px solid var(--secondary);">
+                <div style="width: 40px; height: 40px; background: var(--secondary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; margin: 0 auto 15px;">2</div>
+                <h3 data-hi="अपना विषय चुनें" data-en="Select Your Subject">अपना विषय चुनें</h3>
+                <p style="font-size: 0.9rem; color: var(--text-muted);" data-hi="Maths, Science या GK/GS में से अपनी जरूरत के अनुसार अपना पसंदीदा बैच चुनें।" data-en="Choose your favorite batch among Maths, Science, or GK/GS as per your need.">Maths, Science या GK/GS में से अपनी जरूरत के अनुसार अपना पसंदीदा बैच चुनें।</p>
+            </div>
+
+            <div class="feat-box" style="border-top: 4px solid var(--accent);">
+                <div style="width: 40px; height: 40px; background: var(--accent); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; margin: 0 auto 15px;">3</div>
+                <h3 data-hi="तैयारी शुरू करें" data-en="Start Preparation">तैयारी शुरू करें</h3>
+                <p style="font-size: 0.9rem; color: var(--text-muted);" data-hi="घर बैठे Ajit Sir की लाइव क्लासेस, PDF नोट्स और डेली टेस्ट से अपनी तैयारी पक्की करें।" data-en="Boost your preparation from home with Ajit Sir's live classes, PDF notes & daily tests.">घर बैठे Ajit Sir की लाइव क्लासेस, PDF नोट्स और डेली टेस्ट से अपनी तैयारी पक्की करें।</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Student Testimonials -->
+    <section style="background: white; padding: 75px 20px;">
+        <div style="max-width: 1200px; margin: auto;">
+            <div class="section-title">
+                <span data-hi="छात्रों की राय" data-en="STUDENT FEEDBACK">छात्रों की राय</span>
+                <h2 data-hi="हमारे होनहार छात्र क्या कहते हैं?" data-en="What Our Students Say?">हमारे होनहार छात्र क्या कहते हैं?</h2>
+            </div>
+
+            <div class="courses-grid">
+                <div class="feat-box" style="text-align: left; background: var(--light-bg); border-left: 4px solid var(--primary);">
+                    <div style="color: var(--gold); margin-bottom: 10px;">★★★★★</div>
+                    <p style="font-size: 0.92rem; margin-bottom: 15px;" data-hi="“पहले मुझे Maths से बहुत डर लगता था, लेकिन Ajit Sir की आसान ट्रिक्स और Akhand Bharat ऐप के नोट्स से अब गणित मेरा सबसे पसंदीदा विषय बन गया है।”" data-en="“Earlier I was very scared of Maths, but with Ajit Sir's easy tricks and Akhand Bharat app's notes, Maths has become my favorite subject.”">“पहले मुझे Maths से बहुत डर लगता था, लेकिन Ajit Sir की आसान ट्रिक्स और Akhand Bharat ऐप के नोट्स से अब गणित मेरा सबसे पसंदीदा विषय बन गया है।”</p>
+                    <strong style="color: var(--secondary);">— Rahul Kumar (Mokama)</strong>
+                </div>
+
+                <div class="feat-box" style="text-align: left; background: var(--light-bg); border-left: 4px solid var(--accent);">
+                    <div style="color: var(--gold); margin-bottom: 10px;">★★★★★</div>
+                    <p style="font-size: 0.92rem; margin-bottom: 15px;" data-hi="“Science के कठिन टॉपिक भी सर इतने सरल उदाहरण देकर समझाते हैं कि क्लास में ही सब याद हो जाता है। PDF नोट्स भी बहुत शानदार हैं।”" data-en="“Sir explains even tough Science topics with such simple examples that everything gets memorized right in the class. PDF notes are also amazing.”">“Science के कठिन टॉपिक भी सर इतने सरल उदाहरण देकर समझाते हैं कि क्लास में ही सब याद हो जाता है। PDF नोट्स भी बहुत शानदार हैं।”</p>
+                    <strong style="color: var(--secondary);">— Priya Kumari (Barh)</strong>
+                </div>
+
+                <div class="feat-box" style="text-align: left; background: var(--light-bg); border-left: 4px solid var(--secondary);">
+                    <div style="color: var(--gold); margin-bottom: 10px;">★★★★★</div>
+                    <p style="font-size: 0.92rem; margin-bottom: 15px;" data-hi="“मोकामा क्षेत्र के छात्रों के लिए यह ऐप किसी वरदान से कम नहीं है। रोज़ाना टेस्ट देने से हमारी तैयारी का असली लेवल पता चलता है।”" data-en="“This app is nothing less than a boon for students of the Mokama region. Taking daily tests shows the real level of our preparation.”">“मोकामा क्षेत्र के छात्रों के लिए यह ऐप किसी वरदान से कम नहीं है। रोज़ाना टेस्ट देने से हमारी तैयारी का असली लेवल पता चलता है।”</p>
+                    <strong style="color: var(--secondary);">— Ankit Raj (Mokama)</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. FAQ Section -->
+    <section class="section">
+        <div class="section-title">
+            <span data-hi="आपके सवाल" data-en="HAVE QUESTIONS?">आपके सवाल</span>
+            <h2 data-hi="अक्सर पूछे जाने वाले सवाल (FAQ)" data-en="Frequently Asked Questions">अक्सर पूछे जाने वाले सवाल (FAQ)</h2>
+        </div>
+
+        <div style="max-width: 800px; margin: auto; display: flex; flex-direction: column; gap: 15px;">
+            <details style="background: white; padding: 18px 22px; border-radius: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); cursor: pointer;">
+                <summary style="font-weight: 700; color: var(--secondary); font-size: 1.02rem;" data-hi="❓ अगर लाइव क्लास छूट जाए तो क्या बाद में देख सकते हैं?" data-en="❓ If I miss a live class, can I watch it later?">❓ अगर लाइव क्लास छूट जाए तो क्या बाद में देख सकते हैं?</summary>
+                <p style="margin-top: 10px; font-size: 0.92rem; color: var(--text-muted);" data-hi="जी हाँ! हर लाइव क्लास खत्म होने के बाद उसका रिकॉर्डेड वीडियो ऐप पर सेव हो जाता है, जिसे आप कभी भी और कितनी भी बार देख सकते हैं।" data-en="Yes! After every live class ends, its recorded video is saved on the app, which you can watch anytime and any number of times.">जी हाँ! हर लाइव क्लास खत्म होने के बाद उसका रिकॉर्डेड वीडियो ऐप पर सेव हो जाता है, जिसे आप कभी भी और कितनी भी बार देख सकते हैं।</p>
+            </details>
+
+            <details style="background: white; padding: 18px 22px; border-radius: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); cursor: pointer;">
+                <summary style="font-weight: 700; color: var(--secondary); font-size: 1.02rem;" data-hi="❓ क्या क्लास के नोट्स और PDF मोबाइल में डाउनलोड हो जाते हैं?" data-en="❓ Can class notes and PDFs be downloaded on mobile?">❓ क्या क्लास के नोट्स और PDF मोबाइल में डाउनलोड हो जाते हैं?</summary>
+                <p style="margin-top: 10px; font-size: 0.92rem; color: var(--text-muted);" data-hi="बिल्कुल! सभी विषयों के चैप्टर-वाइज PDF नोट्स और प्रैक्टिस शीट आप ऐप से डाउनलोड करके आसानी से पढ़ सकते हैं या प्रिंट निकलवा सकते हैं।" data-en="Absolutely! You can easily download chapter-wise PDF notes and practice sheets for all subjects from the app to read or print.">बिल्कुल! सभी विषयों के चैप्टर-वाइज PDF नोट्स और प्रैक्टिस शीट आप ऐप से डाउनलोड करके आसानी से पढ़ सकते हैं या प्रिंट निकलवा सकते हैं।</p>
+            </details>
+
+            <details style="background: white; padding: 18px 22px; border-radius: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); cursor: pointer;">
+                <summary style="font-weight: 700; color: var(--secondary); font-size: 1.02rem;" data-hi="❓ क्या यह ऐप धीमे इंटरनेट (कम डेटा) पर भी चलता है?" data-en="❓ Does this app work smoothly on slow internet?">❓ क्या यह ऐप धीमे इंटरनेट (कम डेटा) पर भी चलता है?</summary>
+                <p style="margin-top: 10px; font-size: 0.92rem; color: var(--text-muted);" data-hi="हाँ, Akhand Bharat ऐप को खास तौर पर गाँव और कस्बों के छात्रों के लिए बनाया गया है, जिसमें वीडियो क्वालिटी कम-ज्यादा करने का विकल्प मिलता है।" data-en="Yes, the Akhand Bharat app is specially designed for rural and town students, offering video quality adjustment options for low data usage.">हाँ, Akhand Bharat ऐप को खास तौर पर गाँव और कस्बों के छात्रों के लिए बनाया गया है, जिसमें वीडियो क्वालिटी कम-ज्यादा करने का विकल्प मिलता है।</p>
+            </details>
+        </div>
+    </section>
+
+    </footer>
+
+    <script>
+        let currentLang = 'hi';
+        function toggleLanguage() {
+            currentLang = currentLang === 'hi' ? 'en' : 'hi';
+            document.querySelectorAll('[data-hi][data-en]').forEach(el => {
+                el.innerHTML = el.getAttribute(`data-${currentLang}`);
+            });
+            document.getElementById('langText').innerText = currentLang === 'hi' ? 'English' : 'हिंदी';
+        }
+    </script>
+</body>
+</html>
+
